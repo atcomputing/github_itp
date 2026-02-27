@@ -1,0 +1,44 @@
+{% extends "base.html" %}
+{% block title %}Index{% endblock %}
+
+{% block content %}
+<section class="py-5 text-center container">
+  <div class="row py-lg-1">
+    <div class="col-lg-8 col-md-8 mx-auto">
+      <h1 class="fw-heavy" style="color: #59371c;">IN THE PICTURE</h1>
+      <p class="lead text-muted">Backup your photos. Worry-free.</p>
+      <p>
+      <form action="/upload" method="post" enctype="multipart/form-data">
+        <input class="btn btn-secondary" type="file" name="file">
+        <input class="btn btn-secondary" type="submit" name="submit" value="Upload">
+      </form>
+      </p>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="album py-5 bg-dark">
+    <div class="container">
+      <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 row-cols-md-4 g-2">
+        {% if images %}
+        {% for image in images %}
+        <div class="col">
+          <div class="card shadow-sm">
+            <a href="../preview/{{ image.file_name }}">
+              <img class="card-img-top" src="../download/{{ image.file_name }}"
+                style="height: 180px; object-fit: contain; padding: 3px;">
+            </a>
+            <text style="padding-left: 10px; font-size: x-small;">{{ image.file_name }} -- {{ image.mtime }}</text>
+            </img>
+          </div>
+        </div>
+        {% endfor %}
+        {% else %}
+        <p class="text-muted">No images yet...</p>
+        {% endif %}
+      </div>
+    </div>
+  </div>
+</section>
+{% endblock %}

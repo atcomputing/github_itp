@@ -1,0 +1,38 @@
+[flake8]
+# Flake8 configuration for In The Picture application
+
+# Maximum line length (PEP 8 recommends 79, but 88 is more practical)
+max-line-length = 88
+
+# Exclude directories from linting
+exclude =
+    .git,
+    __pycache__,
+    .pytest_cache,
+    venv,
+    env,
+    uploads,
+    test_uploads,
+    *.pyc,
+    .eggs,
+    *.egg
+
+# Error codes to ignore
+ignore =
+    # E203: Whitespace before ':' (conflicts with Black formatter)
+    E203,
+    # W503: Line break before binary operator (PEP 8 updated, now acceptable)
+    W503,
+    # D100: Missing docstring in public module (too strict for small projects)
+    D100,
+    # D104: Missing docstring in public package (too strict)
+    D104
+
+# Show source code for each error
+show-source = True
+
+# Count errors
+count = True
+
+# Statistics summary
+statistics = True

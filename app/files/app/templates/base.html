@@ -1,0 +1,77 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  {% block meta %}{% endblock %}
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="">
+  <meta name="author" content="AT Computing, and Bootstrap contributors">
+
+  <!-- BoxIcons -->
+  <!-- https://boxicons.com/ -->
+  <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+  <!-- Bootstrap -->
+  <!-- https://getbootstrap.com -->
+  <link href="../static/bootstrap.min.css" rel="stylesheet">
+  <title>{% block title %}{% endblock %} - IN THE PICTURE</title>
+  <link rel="icon" type="image/x-icon" href="/static/camera.png">
+</head>
+
+<body style="background-color: #ebdacc">
+  <header>
+    <div class="collapse bg-dark" id="navbarHeader">
+      <div class="container">
+        <div class="row">
+          <div class="col-sm-8 col-md-7 py-4">
+            <h4 class="text-white">About</h4>
+            <p class="text-muted">This webapplication is made for demonstration purposes. It uploads
+              pictures from your local machine to a place on the web. The image itself is stored on
+              storage.</p>
+          </div>
+          <div class="col-sm-4 offset-md-1 py-4">
+            <h4 class="text-white">Contact</h4>
+            <ul class="list-unstyled">
+              <li><a href="https://twitter.com/atcomputing" target="_blank" class="text-white"><i
+                    class='bx bxl-twitter'></i></a></li>
+              <li><a href="https://www.linkedin.com/company/at-computing/" class="text-white"><i
+                    class='bx bxl-linkedin-square'></i></a></li>
+              <li><a href="https://github.com/atcomputing" target="_blank" class="text-white"><i
+                    class='bx bxl-github'></i></a></li>
+              <li><a href="https://atcomputing.nl" target="_blank" class="text-white"><i
+                    class='bx bx-home-heart'></i></a>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="navbar navbar-dark shadow-sm">
+      <div class="container">
+        <a href="../" class="navbar-brand d-flex align-items-center">
+          <img src="../static/inthepicture.png" width="30%"></a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarHeader"
+          aria-controls="navbarHeader" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+      </div>
+    </div>
+  </header>
+  <main>
+    {% block content %}
+    IN THE PICTURE...
+    {% endblock %}
+  </main>
+  <footer class="text-muted py-5">
+    {% block footer %}
+    <div class="container">
+      <p class="mb-1">
+        <a href="https://atcomputing.nl" target="_blank"><img src="../static/AT-LOGO-WEB-BL-v1.png" width="25%"></a>
+      </p>
+    </div>
+    {% endblock %}
+  </footer>
+  <script src="../static/bootstrap.bundle.min.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,13 @@
+# Flask Web Framework
+Flask==3.0.0
+
+# Testing Framework
+pytest==7.4.3
+pytest-cov==4.1.0
+
+# Code Quality Tools
+flake8==6.1.0
+flake8-docstrings==1.7.0
+
+# Werkzeug (Flask dependency, pinned for compatibility)
+Werkzeug==3.0.1

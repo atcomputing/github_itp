@@ -1,0 +1,37 @@
+{% extends "base.html" %}
+{% block title %}Preview{% endblock %}
+
+{% block content %}
+<section class="py-5 text-center container">
+  <div class="row py-lg-1">
+    <div class="col-lg-8 col-md-8 mx-auto">
+      <h1 class="fw-heavy" style="color: #59371c">IN THE PICTURE</h1>
+      <p class="lead text-muted">Backup your photos. Worry-free.</p>
+      <p>
+      <form action="../download/{{ name }}" method="get" enctype="multipart/form-data">
+        <input class="btn btn-secondary" type="submit" name="submit" value="Download">
+      </form>
+      </p>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="album py-5 bg-dark">
+    <div class="container">
+      <div class="row row-cols-1 g-1">
+        <div class="col">
+          <div class="card shadow-sm">
+            <a href="../">
+              <img class="card-img-top" src="../download/{{ name }}"
+                style="height: 660px; object-fit: contain; padding: 5px;">
+            </a>
+            <text style="padding-left: 14px;">{{ name }}</text>
+            </img>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+{% endblock %}

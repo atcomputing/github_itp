@@ -1,0 +1,15 @@
+{% extends "base.html" %}
+{% block meta %}
+<meta http-equiv="refresh" content="2;URL='/'" />
+{% endblock %}
+{% block title %}Message{% endblock %}
+
+{% block content %}
+<section class="py-5 text-center container">
+  <div class="row py-lg-5">
+    <div class="col-lg-6 col-md-8 mx-auto">
+      <p class="lead text-muted">{{ message }}</p>
+    </div>
+  </div>
+</section>
+{% endblock %}
