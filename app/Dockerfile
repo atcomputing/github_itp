@@ -24,4 +24,4 @@ ENV FLASK_ENV=production
 ENV PICTURES_DIR=/pictures
 
 # Run app.py when the container launches
-CMD ["python3.10", "-m" , "flask", "--app", "app.py", "run", "--host=0.0.0.0", "--port", "5001"]
+CMD ["python3.11", "-m" , "flask", "--app", "app.py", "run", "--host=0.0.0.0", "--port", "5001"]
