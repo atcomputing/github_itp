@@ -9,9 +9,6 @@ RUN pip install --no-cache-dir -r requirements.txt
 
 # Copy application files and tests
 COPY files/app .
-COPY files/tests tests/
-COPY files/pytest.ini .
-COPY files/.flake8 .
 
 # Create directory for image storage
 RUN mkdir -p /pictures
