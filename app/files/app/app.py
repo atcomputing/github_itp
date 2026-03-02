@@ -5,15 +5,13 @@ from flask import (
     request,
     redirect,
     send_from_directory,
-    url_for,
 )
 from werkzeug.utils import secure_filename
-import sys
 import os
 from os.path import join, splitext, exists, getmtime
 from os import urandom, listdir
 
-app = Flask("In the Picture")
+app = Flask(__name__)
 
 app.secret_key = urandom(24)
 
@@ -76,7 +74,7 @@ def upload_file():
     if request.method == "POST":
         if "file" not in request.files:
             print("no file in request")
-            return redirect(request.url) # Redirect user back to the form page
+            return redirect(request.url)  # Redirect user back to the form page
 
         file = request.files["file"]
 
@@ -112,6 +110,7 @@ def download(imgname):
 @app.route("/static/<name>")
 def get_static(name):
     return send_from_directory("static", name)
+
 
 # To keep the application running
 if __name__ == "__main__":
