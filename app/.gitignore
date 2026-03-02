@@ -2,13 +2,7 @@
 .env
 
 # Uploaded Images (user content, not part of codebase)
-uploads/
-*.jpg
-*.jpeg
-*.png
-*.gif
-*.svg
-*.webp
+uploads/*
 
 # Python
 __pycache__/
