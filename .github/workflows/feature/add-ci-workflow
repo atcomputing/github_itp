@@ -1,0 +1,69 @@
+# Workflow name (appears in GitHub UI)
+name: CI Pipeline
+
+# Trigger events: when should this workflow run?
+on:
+  push:
+    branches: [ main ]  # Run on pushes to main
+  pull_request:
+    branches: [ main ]  # Run on PRs targeting main
+
+# Jobs: units of work that run in parallel (unless dependencies specified)
+jobs:
+  # Job 1: Code quality checks
+  lint:
+    name: Code Linting
+    runs-on: ubuntu-latest  # GitHub-hosted runner (free tier)
+
+    steps:
+      # Step 1: Check out repository code
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      # Step 2: Set up Python environment
+      - name: Set up Python 3.11
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.11'
+
+      # Step 3: Install linting tool
+      - name: Install flake8
+        run: |
+          python -m pip install --upgrade pip
+          pip install flake8
+
+      # Step 4: Run linter (checks code style)
+      - name: Lint with flake8
+        run: |
+          # Stop build if there are Python syntax errors or undefined names
+          flake8 app/files/app --count --select=E9,F63,F7,F82 --show-source --statistics
+          # Treat warnings as errors for code quality
+          # Exit-zero treats all errors as warnings (change to fail on warnings)
+          flake8 app/files/app --count --max-line-length=120 --statistics
+
+  # Job 2: Run test suite
+  test:
+    name: Run Tests
+    runs-on: ubuntu-latest
+    needs: lint  # Only run tests if linting passes
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      - name: Set up Python 3.11
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.11'
+
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install -r app/files/requirements.txt
+          pip install pytest pytest-flask
+
+      - name: Run tests with pytest
+        run: |
+          cd app/files
+          pytest tests/ --verbose
+ 
