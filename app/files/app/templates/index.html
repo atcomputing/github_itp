@@ -23,17 +23,25 @@
       <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 row-cols-md-4 g-2">
         {% if images %}
         {% for image in images %}
-        <div class="col">
-          <div class="card shadow-sm">
-            <a href="../preview/{{ image.file_name }}">
-              <img class="card-img-top" src="../download/{{ image.file_name }}"
-                style="height: 180px; object-fit: contain; padding: 3px;">
-            </a>
-            <text style="padding-left: 10px; font-size: x-small;">{{ image.file_name }} -- {{ image.mtime }}</text>
-            </img>
-          </div>
-        </div>
-        {% endfor %}
+<div class="col">
+<div class="card shadow-sm">
+<a href="../preview/{{ image.file_name }}">
+<img class="card-img-top" src="../download/{{ image.file_name }}"
+style="height: 180px; object-fit: contain; padding: 3px;">
+</a>
+<div class="card-body p-2">
+<div class="d-flex justify-content-between align-items-center">
+<text style="font-size: x-small;">{{ image.file_name }}</text>
+<form action="/delete/{{ image.file_name }}" method="post"
+onsubmit="return confirm('Delete {{ image.file_name }}?');"
+style="margin: 0;">
+
+<button type="submit" class="btn btn-sm btn-danger">Delete</button>
+</form>
+</div>
+</div>
+</div>
+</div>        {% endfor %}
         {% else %}
         <p class="text-muted">No images yet...</p>
         {% endif %}
